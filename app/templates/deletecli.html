@@ -16,9 +16,9 @@
                     <h4 class="modal-title" id="myModalLabel">Você está prestes a excluir um client irreversivelmente.</h4>
                 </div>
                 <div class="modal-footer">
-                    <form method="POST" enctype="multipart/form-data" style="margin-left:25%;width:100px;">{% csrf_token %}
+                    <form method="POST" enctype="multipart/form-data" style="margin-left:20%;width:50%;">{% csrf_token %}
 
-                        <label for='form.cli_name'/>Client Name::
+                        <label for='form.cli_name' />Client Name::
                         <font style='text-decoration: underline;color:red;'>{{ person.cli_name }}</font>
                         <label for='form.cli_register'/>Client Register::
                         <font style='text-decoration: underline;color:red;'>{{ person.cli_register }}</font>

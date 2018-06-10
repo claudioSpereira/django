@@ -1,15 +1,15 @@
-from os import rename
-
 from django.shortcuts import get_object_or_404, render, redirect, get_list_or_404
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
 from .models import Client
 from .forms import PersonForm
 
 
 # Create your views here.
+@login_required
 def index(request): 
     return render(request,'index.html')
-
+@login_required
 def listacli(request):
     clients = Client.objects.all()
     return render(request,'listacli.html',{'clients':clients})
