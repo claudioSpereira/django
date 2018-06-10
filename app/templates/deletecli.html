@@ -1,0 +1,53 @@
+{% extends 'base_list.html' %}
+{% block content %}
+ <button><a href="/">HOME</a></button>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<div class="container">
+	<div class="row">
+		<div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <a class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+                    <h4 class="modal-title" id="myModalLabel">Você está prestes a excluir um client irreversivelmente.</h4>
+                </div>
+                <div class="modal-footer">
+                    <form method="POST" enctype="multipart/form-data" style="margin-left:25%;width:100px;">{% csrf_token %}
+
+                        <label for='form.cli_name'/>Client Name::
+                        <font style='text-decoration: underline;color:red;'>{{ person.cli_name }}</font>
+                        <label for='form.cli_register'/>Client Register::
+                        <font style='text-decoration: underline;color:red;'>{{ person.cli_register }}</font>
+
+                        </br></br>
+                        <button class="btn btn-primary" type="submit">Sim, quero EXCLUIR</button>
+                     </form>
+                        </br></br>
+                    <div class="btn-group">
+                    <a class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                </div>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+</div><!-- /.modal -->
+<form method="POST" enctype="multipart/form-data" style="margin-left:25%;width:120px;">{% csrf_token %}
+
+                            <label for='' />Client Name:</br>
+                            <font style='text-decoration: underline;color:red;'>{{ person.cli_name }}</font>
+                            <label for='' />Client Register:
+                            <font style='text-decoration: underline;color:red;'>{{ person.cli_register }}</font>
+
+                        </form>
+                        </br></br>
+                        <a data-toggle="modal" href="#myModal" class="btn btn-danger">Excluir</a>
+	</div>
+</div>
+
+
+
+{% endblock %}

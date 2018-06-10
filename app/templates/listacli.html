@@ -1,0 +1,41 @@
+{% extends 'base_list.html' %}
+{% block content %}
+
+
+                    <button><a href="createcli">NEW</a></button>
+                    <button><a href="/">HOME</a></button>
+                </br></br>
+                    <table id="table" class="display" style="width:100%">
+                            <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Actions</th>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>                                    
+                                        {% for client in clients%}
+                                        <tr>
+                                            <td>{{ client.cli_name }}</td><td><button><a href="{% url 'persons_update' client.id %}"> Editar</a></button> | <button><a href="{% url 'persons_delete' client.id %}">Excluir</a></button></td>
+                                        </tr>
+                                        {% endfor %}                  
+                                    
+                                </tbody>
+                            </table>
+            </div>    
+
+
+            <script>
+                    $(document).ready(function() {
+                        $('#example').DataTable( {
+                            dom: 'Bfrtip',
+                            buttons: [
+                                'copyHtml5',
+                                'excelHtml5',
+                                'csvHtml5',
+                                'pdfHtml5'
+                            ]
+                        } );
+                    } );
+            </script>
+
+{% endblock %}

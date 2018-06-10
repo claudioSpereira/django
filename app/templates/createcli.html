@@ -1,0 +1,20 @@
+{% extends 'base_list.html' %}
+{% block content %}
+
+
+<button><a href="/">HOME</a></button>
+                </br>
+<h1 align="center">New create Client</h1>
+
+<form method="POST" enctype="multipart/form-data" style="margin-left:40%;width:200px;">{% csrf_token %}
+
+    <label for='form.cli_name'>Client Name</label>
+    {{ form.cli_name }}
+    <label for='form.cli_register'>Register Client</label>
+    {{ form.cli_register }}
+    </br></br>
+    <input type="submit" value="OK">
+</form>
+
+
+{% endblock %}
