@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required
 from .models import Client
 from .forms import PersonForm
-
+from django.contrib.auth import logout
 
 # Create your views here.
 @login_required
@@ -13,14 +13,14 @@ def index(request):
 def listacli(request):
     clients = Client.objects.all()
     return render(request,'listacli.html',{'clients':clients})
-
+@login_required
 def createcli(request):
     form = PersonForm(request.POST, None)
     if form.is_valid():
         form.save()
         return redirect('listacli')
     return render(request, 'createcli.html', {'form':form})
-
+@login_required
 def persons_update(request, id):
     person = get_object_or_404(Client, pk=id)
     form = PersonForm(request.POST or None, instance=person)
@@ -28,7 +28,7 @@ def persons_update(request, id):
         form.save()
         return redirect('listacli')
     return render(request, 'createcli.html',{'form':form})
-
+@login_required
 def persons_delete(request, id):
     person = get_object_or_404(Client, pk=id)
 
@@ -37,3 +37,7 @@ def persons_delete(request, id):
         return redirect('listacli')
 
     return render(request, 'deletecli.html',{'person':person})
+
+def mylogout(request):
+    logout(request)
+    return  redirect('/')

@@ -4,6 +4,7 @@ from .views import listacli
 from .views import createcli
 from .views import persons_update
 from .views import persons_delete
+from .views import mylogout
 
 from django.contrib.auth import views as auth_views
 
@@ -15,5 +16,5 @@ urlpatterns = [
     path('delete/<int:id>/', persons_delete,name='persons_delete'),
 
     path('login/', auth_views.login, name="login"),
-    path('logout/', auth_views.logout, name="logout"),
+    path('logout/', mylogout, name="logout"),
 ]

@@ -6,3 +6,7 @@ class PersonForm(ModelForm):
     class Meta:
         model = Client
         fields = ['cli_name','cli_register']
+        labels = {
+            "cli_name": "Client",
+            "cli_register": "Register",
+        }

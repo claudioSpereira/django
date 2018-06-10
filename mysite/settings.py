@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrapform',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,4 +128,4 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = '/login/'
 
-LOGIN_REDIRECT_URL = 'listacli'
+#LOGIN_REDIRECT_URL = 'listacli'
