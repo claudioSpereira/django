@@ -1,41 +1,79 @@
-{% extends 'base_list.html' %}
-{% block content %}
+ {% extends 'base.html' %}
 
+ {% block content %}
+ {% load static %}
+    <!-- DATATABLES START-->
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
-                    <button><a href="createcli">NEW</a></button>
+        <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="cdn.datatables.net/responsive/2.2.1/css/dataTables.responsive.css">
+
+         <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+         <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"></script>
+         <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+         <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+         <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+
+         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css">
+
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+         <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+         <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+        <script type="text/javascript" src="cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.js"></script>
+         <!-- DATATABLES FINISH-->
+
+         <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet" />
+        <!-- FONTAWESOME STYLES-->
+        <link href="{% static 'assets/css/font-awesome.css' %}" rel="stylesheet" />
+            <!-- CUSTOM STYLES-->
+        <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet" />
+        <!-- GOOGLE FONTS-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+        <link rel="stylesheet" href="{% static 'elusive/css/elusive-icons.min.css' %}">
+        <link rel="stylesheet" href="{% static 'elusive/scss/animated.less' %}">
+
+                                    <!-- /. ROW  -->
+
+                       <button><a href="createcli">NEW</a></button>
                     <button><a href="/">HOME</a></button>
                 </br></br>
                     <table id="table" class="display" style="width:100%">
                             <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Actions</th>                                        
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>                                    
+                                <tbody>
                                         {% for client in clients%}
                                         <tr>
                                             <td>{{ client.cli_name }}</td><td><button><a href="{% url 'persons_update' client.id %}"> Editar</a></button> | <button><a href="{% url 'persons_delete' client.id %}">Excluir</a></button></td>
                                         </tr>
-                                        {% endfor %}                  
-                                    
+                                        {% endfor %}
+
                                 </tbody>
                             </table>
-            </div>    
 
 
-            <script>
-                    $(document).ready(function() {
-                        $('#example').DataTable( {
-                            dom: 'Bfrtip',
-                            buttons: [
-                                'copyHtml5',
-                                'excelHtml5',
-                                'csvHtml5',
-                                'pdfHtml5'
-                            ]
-                        } );
-                    } );
-            </script>
 
-{% endblock %}
+                    <!-- DATATABLES START-->
+                    <script>
+                            $(document).ready(function() {
+                                $('#table').DataTable( {
+                                responsive: true,
+                                    dom: 'Bfrtip',
+                                    buttons: [
+                                        'copy', 'csv', 'excel', 'pdf', 'print'
+                                    ]
+
+                                } );
+                            } );
+                    </script>
+                    <!-- DATATABLES FINISH-->
+
+
+
+                  <!-- /. ROW  -->
+ {% endblock %}

@@ -1,7 +1,7 @@
                     {% extends 'base.html' %}
 
                     {% block content %}
-
+                        {% load static %}
 
 
 
@@ -29,13 +29,12 @@
                      
                   </div>
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                      <a href="listacli" style="text-decoration:none;color:#808080;">
                       <div class="div-square">
-                           <a href="listacli" >
                                 <i class="el el-th-list el-4x"></i>
                       <h4>List</h4>
-                      </a>
                       </div>
-                     
+                     </a>
                      
                   </div>
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
@@ -133,7 +132,56 @@
                      
                   </div> 
               </div>   
-                  <!-- /. ROW  -->    
+                  <!-- /. ROW  -->
+
+                    <div id="container">
+
+                <h2>Collaborators News</h2>
+
+                <!--  Outer wrapper for presentation only, this can be anything you like -->
+                <div id="banner-slide">
+
+                  <!-- start Basic Jquery Slider -->
+                  <ul class="bjqs">
+                    <li><a href="#"><img src="{% static 'assets/img/banner01.jpg' %}" title="Done your skill"></a></li>
+                    <li><img src="{% static 'assets/img/banner02.jpg' %}" title="The best travel for collaborators Top 10"></li>
+                    <li><img src="{% static 'assets/img/banner03.jpg' %}" title="Arrive new email instituition for you, call to RH phone"></li>
+                  </ul>
+                  <!-- end Basic jQuery Slider -->
+                </div>
+                <!-- End outer wrapper -->
+                <!-- attach the plug-in to the slider parent element and adjust the settings as required -->
+                <script class="secret-source">
+                  jQuery(document).ready(function($) {
+
+                    $('#banner-slide').bjqs({
+                      animtype      : 'slide',
+                      height        : 320,
+                      width         : 620,
+                      responsive    : true,
+                      randomstart   : true
+                    });
+
+                  });
+                </script>
+              </div>
+                    <script src="{% static 'js/libs/jquery.secret-source.min.js' %}"></script>
+                <script>
+                jQuery(function($) {
+
+                    $('.secret-source').secretSource({
+                        includeTag: false
+                    });
+                });
+                </script>
+                    <!-- /. WRAPPER  -->
+                <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+                <!-- JQUERY SCRIPTS -->
+                <script src="{% static 'assets/js/jquery-1.10.2.js' %}"></script>
+                  <!-- BOOTSTRAP SCRIPTS -->
+                <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+                  <!-- CUSTOM SCRIPTS -->
+                <script src="{% static 'assets/js/custom.js' %} "></script>
                   
                   
                                     
